@@ -14,7 +14,7 @@
     $receiver_id = $_POST['receiver_id'];
     $recipe_id = $_POST['recipe_id'];
 
-    $check = "SELECT * FROM recipes WHERE recipe id='$recipe_id' AND user_id ='$sender_id'";
+    $check = "SELECT * FROM recipes WHERE recipe_id='$recipe_id' AND user_id ='$sender_id'";
 
     $result = $conn->query($check);
 
