@@ -4,6 +4,7 @@
     $_SESSION = [];
     session_destroy();
 
-    echo "Logged Out!";
+    header("Location: login.html");
+    exit();
 
 ?>
