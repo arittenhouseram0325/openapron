@@ -2,7 +2,7 @@
 
     session_start();
 
-    $conn = new mysqli("localhost", "username", "password", "database");
+    $conn = new mysqli("localhost", "username", "password", "test");
 
     //Connection Test
 
