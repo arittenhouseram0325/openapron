@@ -2,7 +2,7 @@
 
     session_start();
 
-    $conn = new mysqli("localhost", "222ECwr", "222,1EC6337,wr", "222ECdb");
+    $conn = new mysqli("localhost", "username", "password", "database");
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -14,7 +14,7 @@
         $user = $result->fetch_assoc();
 
         //Verify Password
-        if (password_verify($password, $user['password'])) {
+        if ($password == $user['password']) {
             
             //Store user info
             $_SESSION['user_id'] = $user['id'];
