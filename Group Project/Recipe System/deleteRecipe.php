@@ -2,7 +2,7 @@
 
     session_start();
 
-    $conn = new mysqli("localhost", "username", "password", "database");
+    $conn = new mysqli("localhost", "222ECwr", "222,1EC6337,wr", "222ECdb");
 
     
     //CHECK LOGIN SECTION
