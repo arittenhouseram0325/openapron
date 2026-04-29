@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Garden Salad - OpenApron</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      header {
+        background-color: #4caf50;
+        color: white;
+        padding: 20px;
+      }
+
+      nav {
+        background-color: #ffffff;
+        padding: 10px;
+      }
+
+      nav a {
+        margin: 15px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+      }
+
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+
+      .dropbtn {
+        background: none;
+        border: none;
+        font-weight: bold;
+        margin: 15px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 150px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 8px 12px;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      main {
+        padding: 40px;
+      }
+
+      footer {
+        background-color: #ddd;
+        padding: 10px;
+        margin-top: 40px;
+      }
+
+      .recipe-card {
+        background-color: white;
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: left;
+      }
+
+      .recipe-card img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+      }
+
+      .recipe-card figcaption {
+        font-size: 12px;
+        color: #888;
+        text-align: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .recipe-body {
+        padding: 24px 28px;
+      }
+
+      .recipe-body h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .recipe-section {
+        margin-bottom: 24px;
+      }
+
+      .recipe-section h2 {
+        font-size: 16px;
+        color: #4caf50;
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .recipe-section ul,
+      .recipe-section ol {
+        padding-left: 20px;
+      }
+
+      .recipe-section li {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.8;
+      }
+
+      .recipe-section p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 8px;
+      }
+
+      .recipe-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 24px;
+        justify-content: center;
+      }
+
+      .recipe-actions button {
+        padding: 8px 18px;
+        border: none;
+        border-radius: 5px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .btn-edit {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .btn-edit:hover {
+        background-color: #45a049;
+      }
+
+      .btn-share {
+        background-color: white;
+        color: #4caf50;
+        border: 2px solid #4caf50 !important;
+      }
+
+      .btn-share:hover {
+        background-color: #f0faf0;
+      }
+
+      .btn-delete {
+        background-color: white;
+        color: #e53935;
+        border: 2px solid #e53935 !important;
+      }
+
+      .btn-delete:hover {
+        background-color: #fff5f5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>OpenApron</h1>
+    </header>
+
+    <nav>
+      <a href="recipesystem.html">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Recipes</button>
+        <div class="dropdown-content">
+          <a href="myrecipes.html">My Recipes</a>
+        </div>
+      </div>
+      <a href="messaging.html">Messaging</a>
+      <div class="dropdown">
+        <button class="dropbtn">Contact Us</button>
+        <div class="dropdown-content">
+          <a href="faq.html">FAQ</a>
+          <a href="contactform.html">Contact Form</a>
+          <a href="customersupport.html">Customer Support</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+      </div>
+      <a href="login.html">Sign Out</a>
+    </nav>
+
+    <main>
+      <div class="recipe-card">
+        <figure>
+          <img src="salad.jpg" alt="Fresh Garden Salad" />
+          <figcaption>Crisp and Colorful Fresh Garden Salad</figcaption>
+        </figure>
+
+        <div class="recipe-body">
+          <h1>Fresh Garden Salad</h1>
+
+          <div class="recipe-actions">
+            <button class="btn-edit">Edit Recipe</button>
+            <button class="btn-share">Share</button>
+            <button class="btn-delete">Delete</button>
+          </div>
+
+          <div class="recipe-section">
+            <h2>Ingredients</h2>
+            <ul>
+              <li>4 cups romaine lettuce, chopped</li>
+              <li>1 cup cherry tomatoes, halved</li>
+              <li>1 cucumber, sliced</li>
+              <li>1/2 red onion, thinly sliced</li>
+              <li>1 cup shredded carrots</li>
+              <li>1/2 cup radishes, sliced</li>
+              <li>1/4 cup croutons</li>
+              <li>1/4 cup shredded Parmesan cheese (optional)</li>
+              <li>3 tablespoons olive oil</li>
+              <li>1 1/2 tablespoons red wine vinegar</li>
+              <li>1 teaspoon Dijon mustard</li>
+              <li>Salt and ground black pepper to taste</li>
+            </ul>
+          </div>
+
+          <div class="recipe-section">
+            <h2>Instructions</h2>
+            <ol>
+              <li>Wash and thoroughly dry all vegetables.</li>
+              <li>
+                Chop the romaine lettuce and add it to a large salad bowl.
+              </li>
+              <li>
+                Add the cherry tomatoes, cucumber, red onion, carrots, and
+                radishes to the bowl.
+              </li>
+              <li>
+                In a small bowl or jar, whisk together the olive oil, red wine
+                vinegar, and Dijon mustard until emulsified.
+              </li>
+              <li>Season the dressing with salt and pepper to taste.</li>
+              <li>
+                Drizzle the dressing over the salad and toss gently to coat all
+                the vegetables evenly.
+              </li>
+              <li>Top with croutons and Parmesan cheese if desired.</li>
+              <li>Serve immediately for the freshest flavor and crunch.</li>
+            </ol>
+          </div>
+
+          <div class="recipe-section">
+            <h2>Nutrition Information</h2>
+            <p>Per serving (based on 4 servings):</p>
+            <ul>
+              <li>Calories: 140</li>
+              <li>Protein: 4g</li>
+              <li>Carbohydrates: 12g</li>
+              <li>Fat: 9g</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 OpenApron</p>
+    </footer>
+  </body>
+</html>

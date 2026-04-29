@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Recipe - Chicken Alfredo | OpenApron</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Lato", Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        color: #333;
+      }
+      header {
+        background-color: #4caf50;
+        color: white;
+        padding: 20px;
+      }
+      header h1 {
+        font-family: "Merriweather", serif;
+        font-size: 28px;
+      }
+      nav {
+        background-color: #ffffff;
+        padding: 10px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      }
+      nav a {
+        margin: 15px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      nav a:hover {
+        color: #4caf50;
+      }
+      .dropdown {
+        display: inline-block;
+        position: relative;
+      }
+      .dropbtn {
+        background: none;
+        border: none;
+        font-weight: bold;
+        margin: 15px;
+        cursor: pointer;
+        font-size: 15px;
+        font-family: "Lato", Arial, sans-serif;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 150px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        border-radius: 4px;
+      }
+      .dropdown-content a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 8px 12px;
+        text-align: left;
+        font-size: 14px;
+      }
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      main {
+        padding: 40px 20px;
+      }
+      .edit-card {
+        background-color: white;
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: left;
+      }
+      .image-section {
+        position: relative;
+      }
+      .image-section img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+      }
+      .image-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        padding: 20px 16px 10px;
+      }
+      .btn-change-image {
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 5px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .btn-change-image:hover {
+        background: white;
+      }
+      figcaption {
+        font-size: 12px;
+        color: #888;
+        text-align: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .edit-body {
+        padding: 24px 28px;
+      }
+      .edit-body h1 {
+        font-family: "Merriweather", serif;
+        font-size: 22px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .edit-section {
+        margin-bottom: 28px;
+      }
+      .edit-section h2 {
+        font-size: 15px;
+        color: #4caf50;
+        font-weight: bold;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .field-group {
+        margin-bottom: 14px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        color: #777;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 9px 12px;
+        border: 1.5px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: "Lato", Arial, sans-serif;
+        color: #333;
+        background: #fafafa;
+        transition: border-color 0.2s;
+        resize: vertical;
+      }
+      input[type="text"]:focus,
+      input[type="number"]:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #4caf50;
+        background: white;
+      }
+      .ingredient-list {
+        list-style: none;
+        padding: 0;
+      }
+      .ingredient-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        animation: slideIn 0.2s ease;
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .ingredient-item input {
+        flex: 1;
+        margin: 0;
+      }
+      .btn-remove {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 0 4px;
+        line-height: 1;
+        transition: color 0.15s;
+        flex-shrink: 0;
+      }
+      .btn-remove:hover {
+        color: #e53935;
+      }
+      .instruction-list {
+        list-style: none;
+        padding: 0;
+      }
+      .instruction-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+        animation: slideIn 0.2s ease;
+      }
+      .step-num {
+        background-color: #4caf50;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 9px;
+      }
+      .instruction-item textarea {
+        flex: 1;
+        min-height: 60px;
+        margin: 0;
+      }
+      .nutrition-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .nutrition-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nutrition-field label {
+        margin-bottom: 0;
+      }
+      .nutrition-field input {
+        width: 100%;
+      }
+      .btn-add {
+        background: none;
+        border: 1.5px dashed #4caf50;
+        color: #4caf50;
+        border-radius: 5px;
+        padding: 6px 14px;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 6px;
+        width: 100%;
+        transition: background 0.15s;
+      }
+      .btn-add:hover {
+        background: #f0faf0;
+      }
+      .edit-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 10px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .edit-actions button {
+        padding: 10px 24px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          transform 0.1s;
+      }
+      .edit-actions button:active {
+        transform: scale(0.97);
+      }
+      .btn-save {
+        background-color: #4caf50;
+        color: white;
+      }
+      .btn-save:hover {
+        background-color: #45a049;
+      }
+      .btn-cancel {
+        background-color: white;
+        color: #888;
+        border: 2px solid #ddd !important;
+      }
+      .btn-cancel:hover {
+        background-color: #f9f9f9;
+      }
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: #333;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        z-index: 999;
+        pointer-events: none;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      footer {
+        background-color: #ddd;
+        padding: 10px;
+        margin-top: 40px;
+        font-size: 13px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>OpenApron</h1></header>
+    <nav>
+      <a href="recipesystem.html">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Recipes</button>
+        <div class="dropdown-content">
+          <a href="myrecipes.html">My Recipes</a>
+        </div>
+      </div>
+      <a href="messaging.html">Messaging</a>
+      <div class="dropdown">
+        <button class="dropbtn">Contact Us</button>
+        <div class="dropdown-content">
+          <a href="faq.html">FAQ</a>
+          <a href="contactform.html">Contact Form</a>
+          <a href="customersupport.html">Customer Support</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+      </div>
+      <a href="login.html">Sign Out</a>
+    </nav>
+
+    <main>
+      <div class="edit-card">
+        <div class="image-section">
+          <figure>
+            <img id="recipeImage" src="pasta.jpg" alt="Chicken Alfredo" />
+            <div class="image-overlay">
+              <button
+                class="btn-change-image"
+                onclick="document.getElementById('imageUpload').click()"
+              >
+                📷 Change Photo
+              </button>
+              <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+                style="display: none"
+                onchange="previewImage(event)"
+              />
+            </div>
+          </figure>
+          <figcaption>Delicious Chicken Alfredo</figcaption>
+        </div>
+
+        <div class="edit-body">
+          <h1>Edit Recipe</h1>
+
+          <div class="edit-section">
+            <h2>📋 Recipe Name</h2>
+            <div class="field-group">
+              <label for="recipeTitle">Title</label>
+              <input
+                type="text"
+                id="recipeTitle"
+                value="Chicken Alfredo"
+                placeholder="Recipe name"
+              />
+            </div>
+          </div>
+
+          <div class="edit-section">
+            <h2>🥗 Ingredients</h2>
+            <ul class="ingredient-list" id="ingredientList">
+              <li class="ingredient-item">
+                <input
+                  type="text"
+                  value="2lbs skinless, boneless chicken breast"
+                />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input
+                  type="text"
+                  value="Pinch of salt and ground black pepper"
+                />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input
+                  type="text"
+                  value="2 (16 oz) package of fettuccine pasta"
+                />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input type="text" value="1 cup heavy cream" />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input type="text" value="1/2 cup grated Parmesan cheese" />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input type="text" value="2 cloves garlic, minced" />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input type="text" value="2 tablespoons butter" />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="ingredient-item">
+                <input type="text" value="2 cups broccoli (optional)" />
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+            </ul>
+            <button class="btn-add" onclick="addIngredient()">
+              + Add Ingredient
+            </button>
+          </div>
+
+          <div class="edit-section">
+            <h2>📝 Instructions</h2>
+            <ol class="instruction-list" id="instructionList">
+              <li class="instruction-item">
+                <span class="step-num">1</span>
+                <textarea>
+Cook the fettuccine according to the package instructions.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">2</span>
+                <textarea>
+In a large skillet, melt the butter and sauté the garlic until fragrant.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">3</span>
+                <textarea>
+Add the heavy cream and Parmesan cheese, stirring until smooth.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">4</span>
+                <textarea>Season with salt and pepper to taste.</textarea>
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">5</span>
+                <textarea>
+Shred the chicken breast into bite-sized pieces.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">6</span>
+                <textarea>
+Combine the chicken with the Alfredo sauce and cook until heated through.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+              <li class="instruction-item">
+                <span class="step-num">7</span>
+                <textarea>
+Serve over the cooked fettuccine and top with additional Parmesan cheese if desired.</textarea
+                >
+                <button
+                  class="btn-remove"
+                  onclick="removeItem(this, true)"
+                  title="Remove"
+                >
+                  ×
+                </button>
+              </li>
+            </ol>
+            <button class="btn-add" onclick="addInstruction()">
+              + Add Step
+            </button>
+          </div>
+
+          <div class="edit-section">
+            <h2>🥦 Nutrition Information</h2>
+            <p style="font-size: 13px; color: #888; margin-bottom: 12px">
+              Per serving (based on 4 servings)
+            </p>
+            <div class="nutrition-grid">
+              <div class="nutrition-field">
+                <label for="calories">Calories</label>
+                <input type="number" id="calories" value="450" min="0" />
+              </div>
+              <div class="nutrition-field">
+                <label for="protein">Protein (g)</label>
+                <input type="number" id="protein" value="30" min="0" />
+              </div>
+              <div class="nutrition-field">
+                <label for="carbs">Carbohydrates (g)</label>
+                <input type="number" id="carbs" value="40" min="0" />
+              </div>
+              <div class="nutrition-field">
+                <label for="fat">Fat (g)</label>
+                <input type="number" id="fat" value="20" min="0" />
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-actions">
+            <button
+              class="btn-cancel"
+              onclick="window.location.href = 'chickenrecipe.html'"
+            >
+              Cancel
+            </button>
+            <button class="btn-save" onclick="saveRecipe()">
+              💾 Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast" id="toast">✅ Recipe saved successfully!</div>
+
+    <footer><p>© 2026 OpenApron</p></footer>
+
+    <script>
+      function removeItem(btn, reNumber) {
+        const item = btn.closest("li");
+        item.style.opacity = "0";
+        item.style.transform = "translateX(10px)";
+        item.style.transition = "opacity 0.2s, transform 0.2s";
+        setTimeout(() => {
+          item.remove();
+          if (reNumber) numberSteps();
+        }, 200);
+      }
+
+      function numberSteps() {
+        document
+          .querySelectorAll("#instructionList .step-num")
+          .forEach((el, i) => (el.textContent = i + 1));
+      }
+
+      function addIngredient() {
+        const list = document.getElementById("ingredientList");
+        const li = document.createElement("li");
+        li.className = "ingredient-item";
+        li.innerHTML = `<input type="text" placeholder="e.g. 1 cup milk" /><button class="btn-remove" onclick="removeItem(this)" title="Remove">×</button>`;
+        list.appendChild(li);
+        li.querySelector("input").focus();
+      }
+
+      function addInstruction() {
+        const list = document.getElementById("instructionList");
+        const num = list.querySelectorAll("li").length + 1;
+        const li = document.createElement("li");
+        li.className = "instruction-item";
+        li.innerHTML = `<span class="step-num">${num}</span><textarea placeholder="Describe this step..."></textarea><button class="btn-remove" onclick="removeItem(this, true)" title="Remove">×</button>`;
+        list.appendChild(li);
+        li.querySelector("textarea").focus();
+      }
+
+      function previewImage(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("recipeImage").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function saveRecipe() {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+    </script>
+  </body>
+</html>
