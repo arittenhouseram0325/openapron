@@ -12,7 +12,7 @@
 
     $user_id = $_SESSION['user_id'];
     
-    $sql = "SELECT recipes.id, recipes.name, recipes.ingredients, recipes.instructions, shared_recipes.sender_id FROM shared_recipes JOIN recipes ON shared_recipes.recipe_id = recipes.id WHERE shared_recipes.receiver_id = '$user_id'";
+     $sql = "SELECT recipes.recipe_id, recipes.title, recipes.ingredients, recipes.instructions, shared_recipes.sender_id FROM shared_recipes JOIN recipes ON shared_recipes.recipe_id = recipes.recipe_id WHERE shared_recipes.receiver_id = '$user_id'";
 
     $result = $conn->query($sql);
 
