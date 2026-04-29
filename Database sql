@@ -14,9 +14,7 @@ CREATE TABLE recipes (
     ingredients TEXT,
     instructions TEXT,
     user_id INT,
-    folder_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (folder_id) REFERENCES folders(folder_id) ON DELETE SET NULL
 );
 
 
