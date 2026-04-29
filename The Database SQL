@@ -20,5 +20,5 @@ CREATE TABLE messages (
     message_content TEXT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50),
-    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
