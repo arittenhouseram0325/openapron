@@ -2,7 +2,7 @@
 
     session_start();
 
-    $conn = new mysqli("localhost", "username", "password", "test");
+    $conn = new mysqli("localhost", "222ECwr", "222,1EC6337,wr", "222ECdb");
 
     //Connection Test
 
