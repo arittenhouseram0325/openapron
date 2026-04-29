@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    username INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100),
     password VARCHAR(255)
 );
