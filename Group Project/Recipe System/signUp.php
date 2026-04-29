@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    $conn = new mysqli("localhost", "username", "password", "database");
+    $conn = new mysqli("localhost", "222ECwr", "222,1EC6337,wr", "222ECdb");
 
     $username = $_POST['username'];
     $password = $_POST['password'];
