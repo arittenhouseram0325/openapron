@@ -6,13 +6,7 @@ CREATE TABLE users (
     password VARCHAR(255)
 );
 
-CREATE TABLE folders (
-    folder_id INT AUTO_INCREMENT PRIMARY KEY,
-    folder_name VARCHAR(100),
-    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
+
 
 CREATE TABLE recipes (
     recipe_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,20 +30,4 @@ CREATE TABLE messages (
 );
 
 
-CREATE TABLE payments (
-    payment_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    payment_amount DECIMAL(10,2),
-    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    payment_status VARCHAR(50),
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
 
-CREATE TABLE subscriptions (
-    subscription_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    plan_type VARCHAR(50),
-    start_date DATE,
-    end_date DATE,
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
