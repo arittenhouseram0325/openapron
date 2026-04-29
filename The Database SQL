@@ -1,5 +1,6 @@
 CREATE TABLE users (
-    username VARCHAR(50) PRIMARY KEY,
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
     email VARCHAR(100),
     password VARCHAR(255)
 );
@@ -9,13 +10,13 @@ CREATE TABLE recipes (
     title VARCHAR(100),
     ingredients TEXT,
     instructions TEXT,
-    username VARCHAR(50),
-    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
+    user_id INT,
     message_content TEXT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50),
