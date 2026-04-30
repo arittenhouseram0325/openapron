@@ -28,7 +28,7 @@
     $instructions = $_POST['instructions'];
 
     //Insert into database
-    $sql = "INSERT INTO recipes (user_id, name, ingredients, instructions) VALUES ('$user_id', '$title', '$ingredients', '$instructions')";
+    $sql = "INSERT INTO recipes (user_id, title, ingredients, instructions) VALUES ('$user_id', '$title', '$ingredients', '$instructions')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Recipe added!";
