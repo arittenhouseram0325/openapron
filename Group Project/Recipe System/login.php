@@ -23,7 +23,7 @@
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
 
-            echo "Login Successful!";
+            header("Location: 
 
         } else {
 
