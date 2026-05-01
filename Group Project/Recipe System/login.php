@@ -14,7 +14,7 @@
         $user = $result->fetch_assoc();
 
         //Verify Password
-        if (password_verify($password, $user['password'])) {
+        if ($password === $user['password'])) {
             
             //Store user info
             $_SESSION['user_id'] = $user['user_id'];
