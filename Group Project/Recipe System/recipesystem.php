@@ -1,3 +1,16 @@
+<?php
+
+  session_start();
+
+  if (!isset($_SESSION[;user_id])) {
+    
+    header(Location: login.html");
+    exit();
+
+  }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -151,7 +164,7 @@
       <div class="dropdown">
         <button class="dropbtn">Recipes</button>
         <div class="dropdown-content">
-          <a href="myrecipes.html">My Recipes</a>
+          <a href="myrecipes.php">My Recipes</a>
         </div>
       </div>
 
@@ -167,7 +180,7 @@
         </div>
       </div>
 
-      <a href="login.html">Sign Out</a>
+      <a href="logout.php">Sign Out</a>
     </nav>
 
     <main>
@@ -179,7 +192,7 @@
           recipes all in one place.
         </p>
         <div class="hero-buttons">
-          <a href="myrecipes.html" class="btn-primary">Browse Recipes</a>
+          <a href="myrecipes.php" class="btn-primary">Browse Recipes</a>
           <a href="register.html" class="btn-secondary">Get Started</a>
         </div>
       </div>
