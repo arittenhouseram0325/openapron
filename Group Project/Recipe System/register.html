@@ -122,36 +122,21 @@
       .signup-card button:hover {
         background-color: #45a049;
       }
+
+      #make-account {
+        text-decoration: none;
+        color: #4caf50;
+      }
+
+      #make-account:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>OpenApron</h1>
     </header>
-
-    <nav>
-      <div class="dropdown">
-        <button class="dropbtn">Recipes</button>
-        <div class="dropdown-content">
-          <a href="myrecipes.html">My Recipes</a>
-          <a href="sharerecipes.html">Share Recipes</a>
-        </div>
-      </div>
-
-      <a href="messaging.html">Messaging</a>
-
-      <div class="dropdown">
-        <button class="dropbtn">Contact Us</button>
-        <div class="dropdown-content">
-          <a href="faq.html">FAQ</a>
-          <a href="contactform.html">Contact Form</a>
-          <a href="customersupport.html">Customer Support</a>
-          <a href="feedback.html">Feedback</a>
-        </div>
-      </div>
-
-      <a href="login.html">Sign Out</a>
-    </nav>
 
     <main>
       <h2>Register for an Account</h2>
@@ -185,7 +170,7 @@
             required
           />
 
-          <button type="submit">Sign Up</button>
+          <a href="login.html" id="make-account">Make an Account</a>
         </form>
       </div>
     </main>
