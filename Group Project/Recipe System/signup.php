@@ -11,11 +11,13 @@
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
     //User sign on check
-    if ($conn->query($sql) === TRUE) {
-        echo "User registered!";
-    } else {
-        echo "Error registering user." . $conn->error;
-    }
+   if ($conn->query($sql) === TRUE) {
+    header("Location: login.html");
+    exit();
+} else {
+    echo "Error registering user." . $conn->error;
+}
+
 
     $conn->close();
 ?>
